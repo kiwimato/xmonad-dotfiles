@@ -1,0 +1,2 @@
+#!/bin/bash
+echo " $(awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now) |$(cat /proc/loadavg  | awk '{print $1" "$2" "$3}') |Fan: $(sensors | egrep '(fan|Core)' | sed -e 's/ RPM/RPM/g' | cut -d : -f 2 | awk '{print $1}' | tr '\n' '|')"
